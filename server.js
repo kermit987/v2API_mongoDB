@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const http = require('http')
 const bodyParser = require('body-parser')
 
 const { router } = require('./routes')
@@ -15,6 +16,9 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv.load()
 }
 
-app.listen(port)
+const server = http.createServer(app).listen(port)
+// app.listen(port)
 
-module.exports = app
+module.exports = {
+  server,
+}

@@ -11,13 +11,11 @@ const port = process.env.PORT || 8888
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/', router)
 
-
 if (process.env.NODE_ENV !== 'production') {
   dotenv.load()
 }
 
 const server = http.createServer(app).listen(port)
-// app.listen(port)
 
 module.exports = {
   server,

@@ -1,5 +1,10 @@
 const { createUser } = require('../model')
 const {
+  MissingData,
+  PasswordMatches,
+  UserAlreadyExist,
+} = require('../error')
+const {
   checkData,
   doesPasswordMatches,
   checkUserAlreadyExist,
@@ -9,16 +14,21 @@ const subscription = async (req, res) => {
   const {
     body: {
       name, lastname, username, email, password, confirmationPassword,
-    }
+    },
   } = req
   try {
-    await checkData(name, lastname, username, email, password, confirmationPassword)
-    await doesPasswordMatches(password, confirmationPassword)
+    checkData(name, lastname, username, email, password, confirmationPassword)
+    doesPasswordMatches(password, confirmationPassword)
     await checkUserAlreadyExist(username, email)
     await createUser(name, lastname, username, email, password)
-    res.status(200).send()
+    return res.status(200).send()
   } catch (e) {
-    
+    switch (e.constructor) {
+      case MissingData: return res.status(200).send()
+      case PasswordMatches: return res.status(200).send()
+      case UserAlreadyExist: return res.status(200).send()
+      default: return res.status(501).send()
+    }
   }
 }
 

@@ -1,4 +1,5 @@
-// const justExport = require('./justExport')
+const Handle = require('./justExport.js')
+
 module.exports = {
-  require('./justExport')
+  Handle,
 }

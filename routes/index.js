@@ -1,5 +1,8 @@
 const app = require('express')
-const controller = require('../controller')
+const {
+  root,
+  subscription,
+} = require('../controller')
 
 const router = app.Router()
 
@@ -7,7 +10,9 @@ router.use((request, response, next) => {
   next()
 })
 
-router.get('/', controller.root)
+router.get('/', root)
+router.post('/subscription', subscription)
+
 module.exports = {
   router,
 }

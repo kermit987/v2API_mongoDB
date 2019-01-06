@@ -1,5 +1,9 @@
+const MissingData = require('./missingData.js')
+const PasswordMatches = require('./passwordMatches.js')
+const UserAlreadyExist = require('./userAlreadyExist.js')
+
 module.exports = {
-  ...require('./missingData.js'),
-  ...require('./passwordMatches.js'),
-  ...require('./userAlreadyExist.js')
+  MissingData,
+  PasswordMatches,
+  UserAlreadyExist,
 }

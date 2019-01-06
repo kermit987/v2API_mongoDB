@@ -3,6 +3,7 @@ const {
   PasswordMatches,
   UserAlreadyExist,
 } = require('../error')
+
 const { getUser } = require('../model')
 
 const checkData = (name, lastname, username, email, password, confirmationPassword) => {
@@ -11,7 +12,7 @@ const checkData = (name, lastname, username, email, password, confirmationPasswo
   }
 }
 
-const checkPasswordMatches = (password, confirmationPassword) => {
+const checkPassword = (password, confirmationPassword) => {
   if (!(password === confirmationPassword)) {
     throw new PasswordMatches('Password doesn\'t matches')
   }
@@ -26,6 +27,6 @@ const checkUserAlreadyExist = async (username, email) => {
 
 module.exports = {
   checkData,
-  checkPasswordMatches,
+  checkPassword,
   checkUserAlreadyExist,
 }

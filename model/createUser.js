@@ -1,4 +1,4 @@
-const User = require('./userSchema')
+const { User } = require('./userSchema')
 
 const createUser = (name, lastname, username, email, password) => {
   const newUser = new User({

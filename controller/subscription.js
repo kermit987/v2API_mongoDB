@@ -27,9 +27,9 @@ const subscription = async (req, res) => {
       case MissingData:
         return res.status(200).send('data missing')
       case PasswordMatches:
-        return res.status(200).send('password doesnt match')
+        return res.status(400).send('password doesnt match')
       case UserAlreadyExist:
-        return res.status(200).send('user already exist')
+        return res.status(409).send('user already exist')
       default:
         return res.status(501).send()
     }

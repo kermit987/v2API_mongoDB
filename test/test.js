@@ -1,8 +1,8 @@
 const request = require('supertest')
-const { server } = require('../server.js')
+const { app } = require('../app.js')
 
 test('Check connection root', async (done) => {
-  await request(server)
+  await request(app)
     .get('/')
     .expect(200)
   done()
@@ -17,7 +17,7 @@ test('[Subscription] valid data', async (done) => {
     username: 'admin',
     email: 'admin@admin.com',
   }
-  await request(server)
+  await request(app)
     .post('/subscription')
     .send(userDetails)
     .set('Accept', 'application/json')
@@ -34,11 +34,11 @@ test('[Subscription] password doesn\'nt matches', async (done) => {
     username: 'admin',
     email: 'admin@admin.com',
   }
-  await request(server)
+  await request(app)
     .post('/subscription')
     .send(userDetails)
     .set('Accept', 'application/json')
     .expect(400)
   done()
-  server.close()
+  app.close()
 })

@@ -5,7 +5,8 @@
   "main": ".eslintrc.js",
   "scripts": {
     "test": "jest",
-    "ci": "jest --watchAll"
+    "ci": "jest --watchAll",
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -25,11 +26,13 @@
   "dependencies": {
     "bidon": "^3.4.1",
     "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^6.2.0",
     "eslint-plugin-jest": "^22.1.2",
     "express": "^4.16.4",
     "jest": "^23.6.0",
     "mongoose": "^5.4.2",
+    "morgan": "^1.9.1",
     "supertest": "^3.3.0"
   }
 }
